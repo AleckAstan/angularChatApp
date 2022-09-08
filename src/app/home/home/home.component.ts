@@ -35,6 +35,7 @@ export class HomeComponent implements OnInit {
 
     this.chatService.checkConnection().subscribe((message) => {
       this.identity = <any>message;
+      this.sendIdentity('Antsa');
     });
   }
   // addChat() {
