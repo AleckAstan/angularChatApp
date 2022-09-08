@@ -1,0 +1,31 @@
+<input #name placeholder="name" id="name"  (keyup.enter)="sendIdentity(name.value); name.value = ''"/>
+<button type="button" id="sendName" value="sendName" (click)="sendIdentity(name.value); name.value = ''" >Send Identity</button>
+
+<h1>You're are fuck'n connected as {{identity}}</h1>
+<div class="casing">
+    <div class="window">
+        <div class="header">SAFI({{users.length}})
+                <select #receiver name="receiver" id="receiver">
+                <option *ngFor="let user of users" [value]="user">
+                    {{ user }}
+            </option>
+            </select>
+        </div>
+        <div class="chats" *ngFor="let message of messenge" >
+            <ng-container *ngIf="message.sender == 'me'; else other_content">
+
+                <span class="u2 chat">{{message.content}}</span>
+            </ng-container>
+            <ng-template #other_content><span class="u1 chat">{{message.content}}</span></ng-template>
+        </div>
+
+        <div class="new-chat">
+            
+            <input #message placeholder="message" id="message"  (keyup.enter)="callPhone(message.value,receiver.value); message.value = ''"/>
+            <button type="button" id="send" value="send" (click)="callPhone(message.value,receiver.value); message.value = ''" >Send</button>
+        </div>
+    </div>
+    <div class="home-btn">
+        <div class="hb-square"></div>
+    </div>
+</div>
